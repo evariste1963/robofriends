@@ -25,7 +25,7 @@ class App extends Component {
       const data = await response.json();
       this.setState({ robots: data });
     } catch (error) {
-      this.state.error = error.message;
+      this.setState({ error: error });
       console.log(this.state.error);
     }
   }
