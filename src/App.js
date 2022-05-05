@@ -10,20 +10,31 @@ class App extends Component {
     this.state = {
       robots: [],
       searchfield: "",
+      error: null,
     };
   }
 
   async componentDidMount() {
-    const response = await fetch(`https://jsonplaceholder.typicode.com/users`);
-    const data = await response.json();
-    this.setState({ robots: data });
+    try {
+      const response = await fetch(
+        `https://jsonplaceholder.typicode.com/userss`
+      );
+      if (!response.ok) {
+        throw Error("unable to find any Robots");
+      }
+      const data = await response.json();
+      this.setState({ robots: data });
+    } catch (error) {
+      this.state.error = error.message;
+      console.log(this.state.error);
+    }
   }
 
-  onSearchChange = event => {
+  onSearchChange = (event) => {
     this.setState({ searchfield: event.target.value });
   };
   render() {
-    const filteredRobots = this.state.robots.filter(robot => {
+    const filteredRobots = this.state.robots.filter((robot) => {
       return robot.name
         .toLowerCase()
         .includes(this.state.searchfield.toLowerCase());
@@ -32,8 +43,8 @@ class App extends Component {
       return <h2>Loading Robofreinds, please wait.....</h2>;
     } else {
       return (
-        <div className='tc'>
-          <h1 className='f1'>RoboFriends</h1>
+        <div className="tc">
+          <h1 className="f1">RoboFriends</h1>
           <SearchBox searchChange={this.onSearchChange} />
           <CardList robots={filteredRobots} />
         </div>
