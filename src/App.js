@@ -17,7 +17,7 @@ class App extends Component {
   async componentDidMount() {
     try {
       const response = await fetch(
-        `https://jsonplaceholder.typicode.com/userss`
+        `https://jsonplaceholder.typicode.com/users`
       );
       if (!response.ok) {
         throw Error("unable to find any Robots");
