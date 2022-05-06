@@ -47,7 +47,7 @@ class App extends Component {
         </h2>
       );
     } else if (this.state.error) {
-      return <div>{<ErrorMessage error={this.state.error.message} />}</div>;
+      return <ErrorMessage error={this.state.error.message} />;
     } else {
       return (
         <div className='tc'>
