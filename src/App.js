@@ -20,7 +20,9 @@ class App extends Component {
         `https://jsonplaceholder.typicode.com/users`
       );
       if (!response.ok) {
-        throw Error("unable to find any Robots");
+        throw Error(
+          `Sorry, but it looks like you don't have any freinds ...perhaps you should try getting out more!`
+        );
       } else this.setState({ error: null });
       const data = await response.json();
       this.setState({ robots: data });
@@ -39,7 +41,11 @@ class App extends Component {
         .includes(this.state.searchfield.toLowerCase());
     });
     if (this.state.robots.length === 0 && !this.state.error) {
-      return <h2>Loading Robofreinds, please wait.....</h2>;
+      return (
+        <h2 className='tc' style={{ color: "white", paddingTop: "10rem" }}>
+          Loading Robofreinds, please wait.....
+        </h2>
+      );
     } else if (this.state.error) {
       return <div>{<ErrorMessage error={this.state.error.message} />}</div>;
     } else {
