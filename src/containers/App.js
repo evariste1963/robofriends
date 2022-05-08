@@ -57,7 +57,11 @@ class App extends Component {
         <Scroll>
           <CardList robots={filteredRobots} />
         </Scroll>
-        <footer> coded by this.me</footer>
+        <footer>
+          <h3 id="footnote">
+            coded by <span id="tag">this.me</span>
+          </h3>
+        </footer>
       </div>
     );
   }
