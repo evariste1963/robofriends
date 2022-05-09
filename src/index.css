@@ -26,13 +26,15 @@ footer {
 }
 
 #footnote {
+  font-weight: 400;
   height: 100%;
   padding-top: 1.5rem;
 }
 
 #tag {
   font-family: Ink free, cursive, sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
+  font-weight: 600;
   font-style: italic;
   color: rgb(219, 193, 25);
 }
